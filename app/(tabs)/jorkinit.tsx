@@ -17,19 +17,21 @@ const DATA = [
   },
 ];
 
-function CottageList(item) {
-  <ListItem title={item.title}/>
+function CottageList({ item }: { item: any }) {
+  return <ListItem title={item.title}/>
 }
 
 export default function Demo() {
-  <SafeAreaProvider>
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={({item}) => <Item title={item.title} />}
-        keyExtractor={item => item.id}
-      />
-    </SafeAreaView>
-  </SafeAreaProvider>
-  return <Button theme="black">Jorking it crazy style!!!</Button>
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <FlatList
+          data={DATA}
+          renderItem={({item}) => <CottageList item={item} />}
+          keyExtractor={item => item.id}
+        />
+        <Button>Jorking it crazy style!!!</Button>
+      </SafeAreaView>
+    </SafeAreaProvider>
+  )
 }

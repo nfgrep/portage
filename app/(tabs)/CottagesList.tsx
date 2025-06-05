@@ -2,25 +2,8 @@ import { Button, FlatList, SafeAreaView, Image, ScrollView, View } from 'react-n
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Card, H4, ListItem, Paragraph, XStack, YStack } from 'tamagui'
 import type { CardProps } from 'tamagui'
-
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'Scary Cottage',
-    image: 'https://www.matthewslittleportagecamp.com/uploads/2/3/3/7/2337778/published/203-0145-2.jpg?1744545750',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Ice Cottage',
-    image: 'https://www.matthewslittleportagecamp.com/uploads/2/3/3/7/2337778/editor/7-outside-view.jpg?1665689086',
-
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Sporty Cottage',
-    image: 'https://www.matthewslittleportagecamp.com/uploads/2/3/3/7/2337778/editor/6.jpg?1625247281',
-  }
-];
+import { router } from 'expo-router';
+import { cottagesData, type Cottage } from '@/data/cottages';
 
 
 // const Item = ({title}: ItemProps) => (
@@ -29,28 +12,27 @@ const DATA = [
 //   </View>
 // );
 
-function CottageItem({ item }: any) {
+function CottageItem({ item }: { item: Cottage }) {
   // return <ListItem hoverTheme >{item.title}</ListItem>
   const borderWidth = 1
+  
+  const handlePress = () => {
+    router.push(`/cottage/${item.id}`);
+  };
+  
   return (
     <Card
-      contentContainerStyle={{
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-      align="center"
-      // elevate
+      alignItems="center"
+      justifyContent="center"
       size="$4"
       bordered
       borderWidth={borderWidth}
       borderRadius="$4"
-      // animation="bouncy"
       width={300 + (borderWidth * 2)}
       height={400}
       scale={1}
-      // hoverStyle={{ scale: 0.925 }}
       pressStyle={{ scale: 0.875 }}
+      onPress={handlePress}
     >
       
       <Image
@@ -72,7 +54,7 @@ function CottageItem({ item }: any) {
       <Card.Footer padded>
         <YStack flex={1}>
           <H4>{item.title}</H4>
-          <Paragraph theme="alt2">Now available</Paragraph>
+          <Paragraph>Now available</Paragraph>
         </YStack>
       </Card.Footer>
 
@@ -87,9 +69,9 @@ export default function Demo() {
     <SafeAreaProvider>
 
       <FlatList
-        data={DATA}
+        data={cottagesData}
         renderItem={(item: any) => CottageItem(item)}
-        keyExtractor={(item: { id: any; }) => item.id}
+        keyExtractor={(item: Cottage) => item.id}
         contentContainerStyle={{
           rowGap: 20,
           flexGrow: 1,
