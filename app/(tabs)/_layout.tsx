@@ -13,6 +13,7 @@ export default function TabLayout() {
 
   return (
     <Tabs
+      initialRouteName='cottages'
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
@@ -27,7 +28,13 @@ export default function TabLayout() {
         }),
       }}>
       <Tabs.Screen
-        name="CottagesList"
+        name="index"
+        options={{
+          href: null
+        }}
+      />
+      <Tabs.Screen
+        name="cottages"
         options={{
           title: 'Cottages',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,

@@ -1,21 +1,10 @@
-import { Button, FlatList, SafeAreaView, Image, ScrollView, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Card, H4, ListItem, Paragraph, XStack, YStack } from 'tamagui'
-import type { CardProps } from 'tamagui'
+import { Image } from 'react-native';
+import { Card, H4, Paragraph, YStack } from 'tamagui';
 import { router } from 'expo-router';
-import { cottagesData, type Cottage } from '@/data/cottages';
+import type { Cottage } from '@/data/cottages';
 
-
-// const Item = ({title}: ItemProps) => (
-//   <View style={styles.item}>
-//     <Text style={styles.title}>{title}</Text>
-//   </View>
-// );
-
-function CottageItem({ item }: { item: Cottage }) {
-  // return <ListItem hoverTheme >{item.title}</ListItem>
+export function BookableListItem({ item }: { item: Cottage }) {
   const borderWidth = 1
-  
   const handlePress = () => {
     router.push(`/cottage/${item.id}`);
   };
@@ -61,25 +50,5 @@ function CottageItem({ item }: { item: Cottage }) {
       {/* <Card.Background>
       </Card.Background> */}
     </Card>
-  )
-}
-
-export default function Demo() {
-  return (
-    <SafeAreaProvider>
-
-      <FlatList
-        data={cottagesData}
-        renderItem={(item: any) => CottageItem(item)}
-        keyExtractor={(item: Cottage) => item.id}
-        contentContainerStyle={{
-          rowGap: 20,
-          flexGrow: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      />
-
-    </SafeAreaProvider>
   )
 }
