@@ -2,12 +2,12 @@ import { useLocalSearchParams, router } from 'expo-router';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Button, Card, H2, H4, Paragraph, YStack, XStack } from 'tamagui';
-import { cottagesData, type Cottage } from '@/data/cottages';
+import { boatsData, type Boat } from '@/data/boats';
 
-export default function CottageDetails() {
+export default function BoatDetails() {
   const { id } = useLocalSearchParams<{ id: string }>();
 
-  const cottage = cottagesData.find((c: Cottage) => c.id === id);
+  const cottage = boatsData.find((c: Boat) => c.id === id);
 
   if (!cottage) {
     return (

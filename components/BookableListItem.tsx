@@ -1,14 +1,14 @@
 import { Image } from 'react-native';
 import { Card, H4, Paragraph, YStack } from 'tamagui';
 import { router } from 'expo-router';
-import type { Cottage } from '@/data/cottages';
+import { Bookable } from '@/data/Interfaces/bookableItemInterface';
 
-export function BookableListItem({ item }: { item: Cottage }) {
-  const borderWidth = 1
+export function BookableListItem({ item }: { item: Bookable }) {
+  const borderWidth = 1;
   const handlePress = () => {
-    router.push(`/cottage/${item.id}`);
+    router.push(`/${item.bookableType}/${item.id}`);
   };
-  
+
   return (
     <Card
       alignItems="center"
@@ -17,13 +17,12 @@ export function BookableListItem({ item }: { item: Cottage }) {
       bordered
       borderWidth={borderWidth}
       borderRadius="$4"
-      width={300 + (borderWidth * 2)}
+      width={300 + borderWidth * 2}
       height={400}
       scale={1}
       pressStyle={{ scale: 0.875 }}
       onPress={handlePress}
     >
-      
       <Image
         // resizeMode="contain"
         source={{
@@ -34,9 +33,8 @@ export function BookableListItem({ item }: { item: Cottage }) {
         style={{
           alignSelf: 'center', // Centers horizontally
 
-          borderTopLeftRadius: "8px",
-          borderTopRightRadius: "8px",
-          
+          borderTopLeftRadius: '8px',
+          borderTopRightRadius: '8px',
         }}
       />
 
@@ -50,5 +48,5 @@ export function BookableListItem({ item }: { item: Cottage }) {
       {/* <Card.Background>
       </Card.Background> */}
     </Card>
-  )
+  );
 }
