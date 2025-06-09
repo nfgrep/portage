@@ -31,10 +31,9 @@ export function BookableListItem({ item }: { item: Bookable }) {
           uri: item.image,
         }}
         style={{
-          alignSelf: 'center', // Centers horizontally
-
-          borderTopLeftRadius: '8px',
-          borderTopRightRadius: '8px',
+          alignSelf: 'center',
+          borderTopLeftRadius: 8,
+          borderTopRightRadius: 8,
         }}
       />
 

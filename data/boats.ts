@@ -9,7 +9,7 @@ export interface Boat extends Bookable {
 
 export const boatsData: Boat[] = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: 'dd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     title: 'Sunset Cruiser',
     image:
       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
@@ -23,7 +23,7 @@ export const boatsData: Boat[] = [
     bookableType: BookableType.Boat,
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: 'eac68afc-c605-48d3-a4f8-fbd91aa97f63',
     title: 'Fishing Pro',
     image:
       'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80',
@@ -37,7 +37,7 @@ export const boatsData: Boat[] = [
     bookableType: BookableType.Boat,
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    id: 'f8694a0f-3da1-471f-bd96-145571e29d72',
     title: 'Speedster',
     image:
       'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80',
