@@ -7,13 +7,13 @@ import { boatsData, type Boat } from '@/data/boats';
 export default function BoatDetails() {
   const { id } = useLocalSearchParams<{ id: string }>();
 
-  const cottage = boatsData.find((c: Boat) => c.id === id);
+  const boat = boatsData.find((c: Boat) => c.id === id);
 
-  if (!cottage) {
+  if (!boat) {
     return (
       <SafeAreaProvider>
         <View style={styles.container}>
-          <H2>Cottage not found</H2>
+          <H2>boat not found</H2>
           <View style={styles.buttonContainer}>
             <Button onPress={() => router.back()}>Go Back</Button>
           </View>
@@ -26,17 +26,15 @@ export default function BoatDetails() {
     <SafeAreaProvider>
       <ScrollView>
         <View style={styles.detailsContainer}>
-          <Image source={{ uri: cottage.image }} style={styles.image} />
+          <Image source={{ uri: boat.image }} style={styles.image} />
 
           <View style={styles.content}>
             <View style={styles.header}>
-              <H2>{cottage.title}</H2>
-              <H4>{cottage.price}</H4>
+              <H2>{boat.title}</H2>
+              <H4>{boat.price}</H4>
             </View>
 
-            <Paragraph style={styles.description}>
-              {cottage.description}
-            </Paragraph>
+            <Paragraph style={styles.description}>{boat.description}</Paragraph>
 
             <View style={styles.cardContainer}>
               <Card style={styles.card}>
@@ -44,7 +42,7 @@ export default function BoatDetails() {
                   <H4>Amenities</H4>
                 </View>
                 <View style={styles.amenitiesList}>
-                  {cottage.amenities?.map((amenity, index) => (
+                  {boat.amenities?.map((amenity, index) => (
                     <Paragraph key={index} style={styles.amenityItem}>
                       • {amenity}
                     </Paragraph>
@@ -58,7 +56,7 @@ export default function BoatDetails() {
                 <H4>Availability</H4>
               </View>
               <Paragraph style={styles.availabilityText}>
-                {cottage.availability}
+                {boat.availability}
               </Paragraph>
             </Card>
 
