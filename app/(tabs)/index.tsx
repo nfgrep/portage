@@ -1,8 +1,3 @@
-// import { Redirect } from 'expo-router';
-
-// export default function Index() {
-//   return <Redirect href="/cottages" />;
-// }
 
 import { FlatList } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
